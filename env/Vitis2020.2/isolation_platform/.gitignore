@@ -1,0 +1,9 @@
+.log/
+logs/
+hw/
+sw/
+resources/
+psu_pmu_0/zynqmp_pmufw_u0/bsp/
+psu_cortexr5_0/standalone_psu_cortexr5_0/bsp/
+psu_cortexr5_0/zynqmp_fsbl/bsp/
+psu_cortexa53_0/standalone_domain/bsp/

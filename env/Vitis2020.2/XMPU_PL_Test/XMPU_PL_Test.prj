@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="XMPU_PL_Test" location="C:/Users/sgdon/Source/sdonchez/isolation-test/env/Vitis2020.2/XMPU_PL_Test" platform="C:/Users/sgdon/Source/sdonchez/isolation-test/env/Vitis2020.2/isolation_platform/export/isolation_platform/isolation_platform.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="XMPU_PL_APU_system" sysConfig="isolation_platform" runtime="C/C++" cpu="standalone_domain" cpuInstance="psu_cortexa53_0" os="standalone" mssSignature="46d64e7f3977870140d520d209e1cb0c">
+  <configuration name="Debug" id="xilinx.gnu.arm.a53.exe.debug.830009225">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.arm.a53.exe.release.1094637728">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

@@ -1,0 +1,6 @@
+.metadata/
+.analytics
+IDE.log
+RemoteSystemsTempFiles/
+pmu_fw_u0/
+r5_fsbl/
