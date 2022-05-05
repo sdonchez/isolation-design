@@ -4,6 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>XMPU_PL_Test</project>
+		<project>Custom_PMU</project>
+		<project>FSBL</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

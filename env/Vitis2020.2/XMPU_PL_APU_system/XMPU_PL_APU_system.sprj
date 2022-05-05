@@ -3,6 +3,8 @@
   <configuration name="Debug" id="com.xilinx.sdx.system.managedbuilder.debugConfiguration.802568640">
     <configBuildOptions xsi:type="systemproject:SystemOptions">
       <applications name="XMPU_PL_Test" domainName="standalone_domain" domainPrettyName="standalone on psu_cortexa53_0" appBuildConfig="Debug"/>
+      <applications name="Custom_PMU" domainName="zynqmp_pmufw_u0" domainPrettyName="zynqmp_pmufw_u0" appBuildConfig="Debug"/>
+      <applications name="FSBL" domainName="zynqmp_fsbl" domainPrettyName="zynqmp_fsbl" appBuildConfig="Debug"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
     </configBuildOptions>
     <lastBuildOptions xsi:type="systemproject:SystemOptions">
@@ -13,6 +15,8 @@
   <configuration name="Release" id="com.xilinx.sdx.system.managedbuilder.releaseConfiguration.1445529037">
     <configBuildOptions xsi:type="systemproject:SystemOptions">
       <applications name="XMPU_PL_Test" domainName="standalone_domain" domainPrettyName="standalone on psu_cortexa53_0" appBuildConfig="Release"/>
+      <applications name="Custom_PMU" domainName="zynqmp_pmufw_u0" domainPrettyName="zynqmp_pmufw_u0" appBuildConfig="Release"/>
+      <applications name="FSBL" domainName="zynqmp_fsbl" domainPrettyName="zynqmp_fsbl" appBuildConfig="Release"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
     </configBuildOptions>
   </configuration>
