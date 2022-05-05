@@ -53,3 +53,28 @@ platform generate
 platform generate
 platform generate
 platform generate
+platform active {isolation_platform}
+domain active {standalone_domain}
+bsp reload
+bsp config stdout "psu_coresight_0"
+bsp config stdin "psu_coresight_0"
+bsp write
+bsp reload
+catch {bsp regenerate}
+domain active {standalone_psu_cortexr5_0}
+bsp reload
+bsp config stdin "psu_coresight_0"
+bsp config stdout "psu_coresight_0"
+bsp write
+bsp reload
+catch {bsp regenerate}
+domain active {zynqmp_fsbl}
+bsp reload
+bsp config stdin "psu_coresight_0"
+bsp config stdout "psu_coresight_0"
+bsp write
+bsp reload
+catch {bsp regenerate}
+domain active {zynqmp_pmufw_u0}
+bsp reload
+bsp write
