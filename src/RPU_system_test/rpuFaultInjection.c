@@ -72,7 +72,7 @@ int main()
     Xil_ICacheDisable();
 
     print("---Starting Fault Injection Test (Running on the APU)---\n\n\r");
-    	print("   Since the APU is the trusted master, all operations should execute successfully");
+    	print("   Since the RPU is not a trusted master, all operations should fail");
 
     	print("   Locations to test\n\r");
     	print("   \tDFX Controller XMPU-PL Config Registers \n\r");
