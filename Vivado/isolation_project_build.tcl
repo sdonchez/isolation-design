@@ -181,19 +181,8 @@ if {[string equal [get_filesets -quiet constrs_1] ""]} {
 # Set 'constrs_1' fileset object
 set obj [get_filesets constrs_1]
 
-# Add/Import constrs file and set constrs file properties
-set file "[file normalize "$origin_dir/project_1/project_1.srcs/constrs_1/new/constr1.xdc"]"
-set file_imported [import_files -fileset constrs_1 [list $file]]
-set file "new/constr1.xdc"
-set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
-set_property -name "file_type" -value "XDC" -objects $file_obj
-
 # Set 'constrs_1' fileset properties
 set obj [get_filesets constrs_1]
-set_property -name "target_constrs_file" -value "[get_files *new/constr1.xdc]" -objects $obj
-set_property -name "target_part" -value "xczu2cg-sfvc784-1-i" -objects $obj
-set_property -name "target_ucf" -value "[get_files *new/constr1.xdc]" -objects $obj
-
 # Create 'sim_1' fileset (if not found)
 if {[string equal [get_filesets -quiet sim_1] ""]} {
   create_fileset -simset sim_1
@@ -2131,12 +2120,8 @@ set_property REGISTERED_WITH_MANAGER "1" [get_files top_bd_design.bd ]
 set_property SYNTH_CHECKPOINT_MODE "Hierarchical" [get_files top_bd_design.bd ] 
 
 #call make_wrapper to create wrapper files
-if { [get_property IS_LOCKED [ get_files -norecurse top_bd_design.bd] ] == 1  } {
-  import_files -fileset sources_1 [file normalize "${origin_dir}/project_1/project_1.gen/sources_1/bd/top_bd_design/hdl/top_bd_design_wrapper.vhd" ]
-} else {
   set wrapper_path [make_wrapper -fileset sources_1 -files [ get_files -norecurse top_bd_design.bd] -top]
   add_files -norecurse -fileset sources_1 $wrapper_path
-}
 
 
 # Create 'synth_1' run (if not found)
