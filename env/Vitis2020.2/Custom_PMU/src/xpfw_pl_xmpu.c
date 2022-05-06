@@ -71,15 +71,15 @@ static struct XpuMasterID XpuMasterIDLUT[] =
 * @note		None.
 *
 *****************************************************************************/
-void XMpuPl_PmuTaskInit(const XPfw_Module_t *SchModPtr)
-{
-	/* schedule the XMpuPl task */
-	if (XPfw_CoreScheduleTask(
-	      SchModPtr, XMPUPL_TASK_INTERVAL, XMpuPl_PmuTask) != XST_SUCCESS) {
-		XPfw_Printf(DEBUG_ERROR,
-				"XMpuPl_PmuTaskInit: Failed to schedule task\r\n");
-	}
-}
+//void XMpuPl_PmuTaskInit(const XPfw_Module_t *SchModPtr)
+//{
+//	/* schedule the XMpuPl task */
+//	if (XPfw_CoreScheduleTask(
+//	      SchModPtr, XMPUPL_TASK_INTERVAL, XMpuPl_PmuTask) != XST_SUCCESS) {
+//		XPfw_Printf(DEBUG_ERROR,
+//				"XMpuPl_PmuTaskInit: Failed to schedule task\r\n");
+//	}
+//}
 
 /****************************************************************************/
 /**
@@ -95,22 +95,22 @@ void XMpuPl_PmuTaskInit(const XPfw_Module_t *SchModPtr)
 * @note		None.
 *
 *****************************************************************************/
-void XMpuPl_PmuTask(void)
-{
-	/* Initialize and Configure pl_xmpu */
-	if (!XMpuPl_Initialized) {
-		/* Check that PL configuration is done */
-		if ((Xil_In32(CSU_PCAP_STATUS) & PCAP_STAT_DONE_EOS)
-										== PCAP_STAT_DONE_EOS) {
-			XPfw_Printf(DEBUG_DETAILED,
-					"XMpuPl_PmuTask: Initializing PL XMPU\n\r");
-			if (0U == configureXMPU(&XmpuInst)) {
-				/* Set Initialized flag */
-				XMpuPl_Initialized = 1U;
-			}
-		}
-	}
-}
+//void XMpuPl_PmuTask(void)
+//{
+//	/* Initialize and Configure pl_xmpu */
+//	if (!XMpuPl_Initialized) {
+//		/* Check that PL configuration is done */
+//		if ((Xil_In32(CSU_PCAP_STATUS) & PCAP_STAT_DONE_EOS)
+//										== PCAP_STAT_DONE_EOS) {
+//			XPfw_Printf(DEBUG_DETAILED,
+//					"XMpuPl_PmuTask: Initializing PL XMPU\n\r");
+//			if (0U == configureXMPU(&XmpuInst)) {
+//				/* Set Initialized flag */
+//				XMpuPl_Initialized = 1U;
+//			}
+//		}
+//	}
+//}
 
 
 /****************************************************************************/
@@ -126,56 +126,56 @@ void XMpuPl_PmuTask(void)
 *
 * @note		None.
 *
-*****************************************************************************/
-static u32 configureXMPU(XmpuPl *InstancePtr)
-{
-	u32 Status = {0U};
-
-	/* Initialize XMPU_PL */
-	XmpuPl_Config * XmpuPl_ConfigPtr = XMpuPl_LookupConfig(XMPU_DEVICE_ID);
-	Status = XMpuPl_CfgInitialize(InstancePtr,
-							XmpuPl_ConfigPtr, XmpuPl_ConfigPtr->BaseAddress);
-	if (Status != 0U) {
-		XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Initialization Failed!\n\r");
-	}
-
-	/* Configure XMPU_PL */
-	if (Status == 0U) {
-		InstWriteReg(InstancePtr, XMPU_PL_CTRL_OFFSET, XMPU_CTRL);
-		InstWriteReg(InstancePtr, XMPU_PL_BYPASS_OFFSET, XMPU_LOCK_MASTERS);
-		InstWriteReg(InstancePtr, XMPU_PL_LOCK_OFFSET, 1U);
-
-		/* Enable Interrupts */
-		XMpuPl_EnableInterrupts(InstancePtr, XMPU_INT_EN);
-	}
-
-	/* Add REGION 0 */
-	if (Status == 0U) {
-		Status = XMpuPl_AddRegion(InstancePtr,
-						REGION_0_ADDR, 1U, REGION_0_MASTERS, REGION_0_CFG);
-		if (Status != 0U) {
-			XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Add Region 0 Failed!\n\r");
-		}
-	}
-
-	/* Add REGION 1 */
-	if (Status == 0U) {
-		Status = XMpuPl_AddRegion(InstancePtr,
-							REGION_1_ADDR, 1U, REGION_1_MASTERS, REGION_1_CFG);
-		if (Status != 0U) {
-			XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Add Region 1 Failed!\n\r");
-		}
-	}
-
-	/* Update XMpuPl Instance */
-	if (Status == 0U) {
-		Status = XMpuPl_GetConfig(InstancePtr);
-		if (Status != 0U) {
-			XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Get Config Failed!\n\r");
-		}
-	}
-	return Status;
-}
+//*****************************************************************************/
+//static u32 configureXMPU(XmpuPl *InstancePtr)
+//{
+//	u32 Status = {0U};
+//
+//	/* Initialize XMPU_PL */
+//	XmpuPl_Config * XmpuPl_ConfigPtr = XMpuPl_LookupConfig(XMPU_DEVICE_ID);
+//	Status = XMpuPl_CfgInitialize(InstancePtr,
+//							XmpuPl_ConfigPtr, XmpuPl_ConfigPtr->BaseAddress);
+//	if (Status != 0U) {
+//		XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Initialization Failed!\n\r");
+//	}
+//
+//	/* Configure XMPU_PL */
+//	if (Status == 0U) {
+//		InstWriteReg(InstancePtr, XMPU_PL_CTRL_OFFSET, XMPU_CTRL);
+//		InstWriteReg(InstancePtr, XMPU_PL_BYPASS_OFFSET, XMPU_LOCK_MASTERS);
+//		InstWriteReg(InstancePtr, XMPU_PL_LOCK_OFFSET, 1U);
+//
+//		/* Enable Interrupts */
+//		XMpuPl_EnableInterrupts(InstancePtr, XMPU_INT_EN);
+//	}
+//
+//	/* Add REGION 0 */
+//	if (Status == 0U) {
+//		Status = XMpuPl_AddRegion(InstancePtr,
+//						REGION_0_ADDR, 1U, REGION_0_MASTERS, REGION_0_CFG);
+//		if (Status != 0U) {
+//			XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Add Region 0 Failed!\n\r");
+//		}
+//	}
+//
+//	/* Add REGION 1 */
+//	if (Status == 0U) {
+//		Status = XMpuPl_AddRegion(InstancePtr,
+//							REGION_1_ADDR, 1U, REGION_1_MASTERS, REGION_1_CFG);
+//		if (Status != 0U) {
+//			XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Add Region 1 Failed!\n\r");
+//		}
+//	}
+//
+//	/* Update XMpuPl Instance */
+//	if (Status == 0U) {
+//		Status = XMpuPl_GetConfig(InstancePtr);
+//		if (Status != 0U) {
+//			XPfw_Printf(DEBUG_ERROR,"\n\rXMPU Get Config Failed!\n\r");
+//		}
+//	}
+//	return Status;
+//}
 
 /****************************************************************************/
 /**

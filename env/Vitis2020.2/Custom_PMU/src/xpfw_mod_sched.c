@@ -37,7 +37,7 @@
 static void SchCfgInit(const XPfw_Module_t *ModPtr, const u32 *CfgData, u32 Len)
 {
 	/* Add in the XMpuPL PMU task */
-	XMpuPl_PmuTaskInit(ModPtr);
+	//XMpuPl_PmuTaskInit(ModPtr);
 }
 
 void ModSchInit(void)

@@ -78,3 +78,4 @@ catch {bsp regenerate}
 domain active {zynqmp_pmufw_u0}
 bsp reload
 bsp write
+platform generate
